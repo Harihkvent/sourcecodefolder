@@ -1,0 +1,12 @@
+import pytesseract
+from PIL import Image as im
+
+# Open the image file
+#image = Image.open('image1.png')
+image_1 = 'image1.png'
+fp = im.open(image_1)
+# Perform OCR using PyTesseract
+text = pytesseract.image_to_string(fp)
+
+# Print the extracted text to the console
+print(text)
