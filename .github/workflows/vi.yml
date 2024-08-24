@@ -1,36 +1,75 @@
-# This is a basic workflow to help you get started with Actions
+name: Syntax Check
 
-name: CI
-
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "master" branch
   push:
-    branches: [ "master","ProjectBranch" ]
+    branches:
+      - main
   pull_request:
-    branches: [ "master","ProjectBranch" ]
+    branches:
+      - main
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  check-syntax:
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+    ### JavaScript Syntax Check
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '14'
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+    - name: Install ESLint for JavaScript
+      run: npm install eslint
+
+    - name: Run ESLint
+      run: npx eslint '**/*.js'
+
+    ### HTML Syntax Check
+    - name: Install HTMLHint for HTML
+      run: npm install htmlhint
+
+    - name: Run HTMLHint
+      run: npx htmlhint '**/*.html'
+
+    ### CSS Syntax Check
+    - name: Install Stylelint for CSS
+      run: npm install stylelint stylelint-config-standard
+
+    - name: Run Stylelint
+      run: npx stylelint '**/*.css'
+
+    ### Python Syntax Check
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Install Flake8 for Python
+      run: pip install flake8
+
+    - name: Run Flake8
+      run: flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+
+    ### Java Syntax Check
+    - name: Set up Java
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: '17' # You can change this to the required version
+
+    - name: Compile Java code to check syntax
+      run: javac $(find . -name "*.java")
+
+    ### C Syntax Check
+    - name: Install GCC for C
+      run: sudo apt-get install gcc
+
+    - name: Compile C code to check syntax
+      run: gcc -fsyntax-only $(find . -name "*.c")
+
+    ### Additional Language Checks
+    # Add other language checks here following the same pattern as above.
