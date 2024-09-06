@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Expert Connect - Home</title>
+    <link rel="stylesheet" href="homestyle.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <h1>Expert Connect</h1>
+            <button class="btn login-btn" onclick="openModal('login')"><p><a href=index.html id="login-link">Login or register</a></p></button>
+            <!-- <button class="btn register-btn" onclick="openModal('register')">Register</button>
+             -->
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Online Slot/Appointment Booking System</h2>
+            <p>Revolutionizing scheduling with 24/7 booking, real-time slot management, and automated confirmations for a smooth experience.</p>
+            <button class="btn book-now-btn">Book Now</button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h3>Our Features</h3>
+            <div class="feature-item">
+                <h4>Real-time Slot Management</h4>
+                <p>Manage slots in real-time, avoiding booking clashes and ensuring efficiency.</p>
+            </div>
+            <div class="feature-item">
+                <h4>Automatic Confirmations</h4>
+                <p>Automated booking confirmations with reminders to reduce no-shows.</p>
+            </div>
+            <div class="feature-item">
+                <h4>Integrated Dashboard</h4>
+                <p>Easy-to-use dashboard for managing bookings and generating reports.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 Expert Connect. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Modal (Login/Register) -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div id="login-form" class="auth-form">
+                <h2>Login</h2>
+                <form>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <button type="submit" class="btn submit-btn">Login</button>
+                </form>
+            </div>
+            <div id="register-form" class="auth-form hidden">
+                <h2>Register</h2>
+                <form>
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <button type="submit" class="btn submit-btn">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
