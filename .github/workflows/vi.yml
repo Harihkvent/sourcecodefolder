@@ -1,0 +1,75 @@
+name: Syntax Check
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  check-syntax:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    ### JavaScript Syntax Check
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '14'
+
+    - name: Install ESLint for JavaScript
+      run: npm install eslint
+
+    - name: Run ESLint
+      run: npx eslint '**/*.js'
+
+    ### HTML Syntax Check
+    - name: Install HTMLHint for HTML
+      run: npm install htmlhint
+
+    - name: Run HTMLHint
+      run: npx htmlhint '**/*.html'
+
+    ### CSS Syntax Check
+    - name: Install Stylelint for CSS
+      run: npm install stylelint stylelint-config-standard
+
+    - name: Run Stylelint
+      run: npx stylelint '**/*.css'
+
+    ### Python Syntax Check
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Install Flake8 for Python
+      run: pip install flake8
+
+    - name: Run Flake8
+      run: flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+
+    ### Java Syntax Check
+    - name: Set up Java
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: '17' # You can change this to the required version
+
+    - name: Compile Java code to check syntax
+      run: javac $(find . -name "*.java")
+
+    ### C Syntax Check
+    - name: Install GCC for C
+      run: sudo apt-get install gcc
+
+    - name: Compile C code to check syntax
+      run: gcc -fsyntax-only $(find . -name "*.c")
+
+    ### Additional Language Checks
+    # Add other language checks here following the same pattern as above.
