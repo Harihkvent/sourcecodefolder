@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
       localStorage.setItem('isLoggedIn', 'true');
 
       // Redirect to the dashboard
-      window.location.href = 'dashboard.html';
+      window.location.href = 'userdashboard.html';
     } else {
       alert('Invalid email or password.');
     }
