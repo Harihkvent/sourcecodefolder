@@ -1,0 +1,28 @@
+*
+{
+    align-items: center;
+    /* background-color: aquamarine; */
+}
+body{
+    text-align: center;
+    background-color: lightblue;
+}
+button{
+    padding: 10px 20px;
+    background-color: darkblue;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.sizebar{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+#bookings-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
