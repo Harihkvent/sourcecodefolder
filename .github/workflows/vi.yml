@@ -3,10 +3,10 @@ name: Syntax Check
 on:
   push:
     branches:
-      - main
+      - main,Project Branch
   pull_request:
     branches:
-      - main
+      - main,Project Branch
 
 jobs:
   check-syntax:
